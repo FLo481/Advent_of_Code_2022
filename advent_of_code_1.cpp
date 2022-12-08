@@ -1,5 +1,4 @@
 #include <iostream>
-#include <stdio.h>
 
 using namespace std;
 
@@ -7,7 +6,6 @@ void empty_array(char* char_array)
 {
 	for(int i = 0; i < 20; i++)
 		*(char_array++) = '\0';
-
 }
 
 int read_file_find_maximum()
@@ -102,7 +100,6 @@ void compare_values(int number, int *value_array)
 			*min_pointer = number;
 		}
 	}
-
 }
 
 int read_file_find_top_three()
