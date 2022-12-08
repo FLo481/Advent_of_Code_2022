@@ -120,7 +120,6 @@ int read_file_calc_score()
         return score;
 }
 
-
 int main()
 {
 	int score = 0;
