@@ -93,7 +93,7 @@ void read_input_perform_actions(char* top_chars)
 	int instruction_arr[3] = {0, 0, 0};
 	int counter = 0;
 
-	if(fp == NULL)
+    if(fp == NULL)
     {
         printf("File does not exist\n");
     }
@@ -101,36 +101,36 @@ void read_input_perform_actions(char* top_chars)
     {
         while((input_ch = fgetc(fp)) != EOF)
         {
-			if(counter == 3)
-			{
-				counter = 0;
-				if(instruction_arr[0] == 1)
-				    move_crates_one_by_one(instruction_arr);
-				else
-				    move_multiple_crates_at_once(instruction_arr);
-				clear_arr(instruction_arr);
-				continue;
-			}
+		if(counter == 3)
+		{
+			counter = 0;
+			if(instruction_arr[0] == 1)
+			    move_crates_one_by_one(instruction_arr);
 			else
-			{
-                if(isdigit(last_ch) && isdigit(input_ch))
-                {
-                    temp_ch[0] = last_ch;
-                    temp_ch[1] = input_ch;
-                    instruction_arr[counter] = atoi(temp_ch);
-                    temp_ch[0] = temp_ch[1] = '\0';
-                    input_ch = '\0';
-                    counter++;
-                }
-                else if(isdigit(last_ch) && (input_ch == ' ' || input_ch == '\n'))
-                {
-                    instruction_arr[counter] = last_ch - '0';
-                    counter++;
-                }
-			}
-			
-			last_ch = input_ch;
+			    move_multiple_crates_at_once(instruction_arr);
+			clear_arr(instruction_arr);
+			continue;
 		}
+		else
+		{
+			if(isdigit(last_ch) && isdigit(input_ch))
+			{
+			    temp_ch[0] = last_ch;
+			    temp_ch[1] = input_ch;
+			    instruction_arr[counter] = atoi(temp_ch);
+			    temp_ch[0] = temp_ch[1] = '\0';
+			    input_ch = '\0';
+			    counter++;
+			}
+			else if(isdigit(last_ch) && (input_ch == ' ' || input_ch == '\n'))
+			{
+			    instruction_arr[counter] = last_ch - '0';
+			    counter++;
+			}
+		}
+			
+		last_ch = input_ch;
+	}
     }
 }
 
